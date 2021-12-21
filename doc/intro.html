@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="21080" />
+
+<meta name="date" content="2021-12-21" />
+
+<title>Introduction to StatComp21080</title>
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to StatComp21080</h1>
+<h4 class="author">21080</h4>
+<h4 class="date">2021-12-21</h4>
+
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p><strong>StatComp21080</strong> is a simple R package developed to estimate the density by using Lindsey’s method and penalized Gaussian mixtures for the ‘Statistical Computing’ course. Two functions are considered, namely, <em>LM</em> (density estimation using Lindsey’s method) and <em>PGM</em> (Density estimations using Lindsey’s method and penalized Gaussian mixtures). For each function, Gibbs sampling is uesd.</p>
+</div>
+<div id="function-lm" class="section level2">
+<h2>function <em>LM</em></h2>
+<p>The source R code for <em>LM</em> is as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="cf">function</span>(df,<span class="dt">n=</span><span class="dv">20</span>,<span class="dt">a=</span><span class="kw">min</span>(df),<span class="dt">b=</span><span class="kw">max</span>(df),<span class="dt">iter=</span><span class="dv">5000</span>,<span class="dt">burnin=</span><span class="dv">1000</span>){</a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="co">#df：估计对象</span></a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="co">#n：分段数</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="co">#N,thin：吉布斯采样次数</span></a>
+<a class="sourceLine" id="cb1-5" title="5">  <span class="co"># 模型适应 </span></a>
+<a class="sourceLine" id="cb1-6" title="6">  nn&lt;-<span class="kw">length</span>(df)</a>
+<a class="sourceLine" id="cb1-7" title="7">  k&lt;-n</a>
+<a class="sourceLine" id="cb1-8" title="8">  abk&lt;-<span class="kw">seq</span>(a,b,<span class="dt">length.out =</span> (k<span class="op">+</span><span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb1-9" title="9">  t&lt;-(abk[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>abk[<span class="op">-</span>(k<span class="op">+</span><span class="dv">1</span>)])<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-10" title="10">  N&lt;-<span class="kw">table</span>(<span class="kw">cut</span>(df,abk))</a>
+<a class="sourceLine" id="cb1-11" title="11">  Y&lt;-<span class="kw">matrix</span>(<span class="kw">sqrt</span>(k<span class="op">/</span>n<span class="op">*</span>(N<span class="op">+</span><span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)))</a>
+<a class="sourceLine" id="cb1-12" title="12">  X&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,n),t),<span class="dt">ncol=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-13" title="13">  Omega&lt;-<span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">ncol =</span> n,<span class="dt">nrow =</span> n)</a>
+<a class="sourceLine" id="cb1-14" title="14">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</a>
+<a class="sourceLine" id="cb1-16" title="16">      <span class="cf">if</span> (t[i]<span class="op">==</span>t[j]) Omega[i,j]&lt;-<span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-17" title="17">      <span class="cf">if</span> (t[i]<span class="op">&lt;</span>t[j]) Omega[i,j]&lt;-t[i]<span class="op">^</span><span class="dv">2</span><span class="op">*</span>(t[j]<span class="op">-</span>t[i]<span class="op">/</span><span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-18" title="18">      <span class="cf">if</span> (t[i]<span class="op">&gt;</span>t[j]) Omega[i,j]&lt;-t[j]<span class="op">^</span><span class="dv">2</span><span class="op">*</span>(t[i]<span class="op">-</span>t[j]<span class="op">/</span><span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-19" title="19">    }</a>
+<a class="sourceLine" id="cb1-20" title="20">  }</a>
+<a class="sourceLine" id="cb1-21" title="21">  D&lt;-<span class="kw">diag</span>(<span class="kw">eigen</span>(Omega)<span class="op">$</span>values)</a>
+<a class="sourceLine" id="cb1-22" title="22">  Q&lt;-<span class="kw">eigen</span>(Omega)<span class="op">$</span>vectors</a>
+<a class="sourceLine" id="cb1-23" title="23">  m&lt;-<span class="kw">sum</span>(D<span class="op">&gt;</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-24" title="24">  D&lt;-D[,<span class="dv">1</span><span class="op">:</span>m]</a>
+<a class="sourceLine" id="cb1-25" title="25">  Z&lt;-Q<span class="op">%*%</span><span class="kw">sqrt</span>(D)</a>
+<a class="sourceLine" id="cb1-26" title="26">  XZ&lt;-<span class="kw">cbind</span>(X,Z)</a>
+<a class="sourceLine" id="cb1-27" title="27">  </a>
+<a class="sourceLine" id="cb1-28" title="28">  <span class="co"># Gibbs采样</span></a>
+<a class="sourceLine" id="cb1-29" title="29">  c.tau&lt;-<span class="dv">10</span><span class="op">^</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb1-30" title="30">  c.sigma&lt;-<span class="dv">10</span><span class="op">^</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb1-31" title="31">  sigma.beta&lt;-<span class="dv">10</span><span class="op">^</span><span class="dv">8</span></a>
+<a class="sourceLine" id="cb1-32" title="32">  tau&lt;-<span class="kw">rep</span>(<span class="dv">1</span>,iter)</a>
+<a class="sourceLine" id="cb1-33" title="33">  sigma&lt;-<span class="kw">rep</span>(<span class="dv">1</span>,iter)</a>
+<a class="sourceLine" id="cb1-34" title="34">  beta.u&lt;-<span class="kw">matrix</span>(<span class="dv">1</span>,<span class="dt">ncol=</span><span class="dv">2</span><span class="op">+</span>m,<span class="dt">nrow=</span>iter)</a>
+<a class="sourceLine" id="cb1-35" title="35">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>iter) {</a>
+<a class="sourceLine" id="cb1-36" title="36">    <span class="cf">while</span> (<span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb1-37" title="37">      tau[i]&lt;-<span class="dv">1</span><span class="op">/</span><span class="kw">rgamma</span>(<span class="dv">1</span>,<span class="dt">shape=</span>m<span class="op">/</span><span class="dv">2-1</span>,<span class="dt">rate=</span>beta.u[i<span class="dv">-1</span>,<span class="dv">3</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span>m)]<span class="op">%*%</span>beta.u[i<span class="dv">-1</span>,<span class="dv">3</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span>m)]<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-38" title="38">      <span class="cf">if</span>(tau[i]<span class="op">&lt;=</span>c.tau) <span class="cf">break</span></a>
+<a class="sourceLine" id="cb1-39" title="39">    }</a>
+<a class="sourceLine" id="cb1-40" title="40">    A&lt;-<span class="kw">diag</span>(<span class="kw">c</span>(<span class="kw">rep</span>(sigma.beta,<span class="dv">2</span>),<span class="kw">rep</span>(tau[i],m)))</a>
+<a class="sourceLine" id="cb1-41" title="41">    <span class="cf">while</span> (<span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb1-42" title="42">      sigma[i]&lt;-<span class="dv">1</span><span class="op">/</span><span class="kw">rgamma</span>(<span class="dv">1</span>,<span class="dt">shape=</span>n<span class="op">/</span><span class="dv">2-1</span>,<span class="dt">rate=</span><span class="kw">t</span>(Y<span class="op">-</span>XZ<span class="op">%*%</span>beta.u[i<span class="dv">-1</span>,])<span class="op">%*%</span>(Y<span class="op">-</span>XZ<span class="op">%*%</span>beta.u[i<span class="dv">-1</span>,])<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-43" title="43">      <span class="cf">if</span>(sigma[i]<span class="op">&lt;=</span>c.sigma) <span class="cf">break</span></a>
+<a class="sourceLine" id="cb1-44" title="44">    }</a>
+<a class="sourceLine" id="cb1-45" title="45">    beta.u[i,]&lt;-<span class="kw">mvrnorm</span>(<span class="dt">mu=</span><span class="kw">solve</span>(<span class="kw">t</span>(XZ)<span class="op">%*%</span>XZ<span class="op">+</span>sigma[i]<span class="op">*</span><span class="kw">solve</span>(A))<span class="op">%*%</span><span class="kw">t</span>(XZ)<span class="op">%*%</span>Y,</a>
+<a class="sourceLine" id="cb1-46" title="46">                        <span class="dt">Sigma=</span>sigma[i]<span class="op">*</span><span class="kw">solve</span>(<span class="kw">t</span>(XZ)<span class="op">%*%</span>XZ<span class="op">+</span>sigma[i]<span class="op">*</span><span class="kw">solve</span>(A)))</a>
+<a class="sourceLine" id="cb1-47" title="47">  }</a>
+<a class="sourceLine" id="cb1-48" title="48">  b&lt;-burnin<span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1-49" title="49">  tau.hat&lt;-<span class="kw">mean</span>(tau[b<span class="op">:</span>iter])</a>
+<a class="sourceLine" id="cb1-50" title="50">  sigma.hat&lt;-<span class="kw">mean</span>(sigma[b<span class="op">:</span>iter])</a>
+<a class="sourceLine" id="cb1-51" title="51">  beta.hat&lt;-<span class="kw">colMeans</span>(beta.u[b<span class="op">:</span>iter,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb1-52" title="52">  u.hat&lt;-<span class="kw">colMeans</span>(beta.u[b<span class="op">:</span>iter,<span class="dv">3</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span>m)])</a>
+<a class="sourceLine" id="cb1-53" title="53">  </a>
+<a class="sourceLine" id="cb1-54" title="54">  <span class="co"># 模型代入</span></a>
+<a class="sourceLine" id="cb1-55" title="55">  r.hat&lt;-beta.hat[<span class="dv">1</span>]<span class="op">+</span>beta.hat[<span class="dv">2</span>]<span class="op">*</span>t<span class="op">+</span>Z<span class="op">%*%</span>u.hat</a>
+<a class="sourceLine" id="cb1-56" title="56">  r.p&lt;-<span class="kw">apply</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,n),r.hat),<span class="dt">ncol=</span><span class="dv">2</span>),<span class="dv">1</span>, max)</a>
+<a class="sourceLine" id="cb1-57" title="57">  I&lt;-<span class="kw">sum</span>((t[<span class="dv">2</span><span class="op">:</span>n]<span class="op">-</span>t[<span class="dv">1</span><span class="op">:</span>(n<span class="dv">-1</span>)])<span class="op">*</span>(r.p[<span class="dv">2</span><span class="op">:</span>n]<span class="op">^</span><span class="dv">2</span><span class="op">+</span>r.p[<span class="dv">1</span><span class="op">:</span>(n<span class="dv">-1</span>)]<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1-58" title="58">  lm&lt;-r.p<span class="op">^</span><span class="dv">2</span><span class="op">/</span>I</a>
+<a class="sourceLine" id="cb1-59" title="59">  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">t=</span>t,<span class="dt">lm=</span>lm))</a>
+<a class="sourceLine" id="cb1-60" title="60">}</a></code></pre></div>
+</div>
+<div id="function-pgm" class="section level2">
+<h2>function <em>PGM</em></h2>
+<p>The source R code for <em>PGM</em> is as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="cf">function</span>(x,<span class="dt">K=</span><span class="dv">35</span>,<span class="dt">a0=</span><span class="kw">min</span>(x),<span class="dt">b0=</span><span class="kw">max</span>(x),<span class="dt">iter=</span><span class="dv">5000</span>,<span class="dt">burnin=</span><span class="dv">1000</span>){<span class="co">#x:样本,a.b:上下限,k:分段数</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="co"># 模型适应</span></a>
+<a class="sourceLine" id="cb2-3" title="3">  n&lt;-<span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb2-4" title="4">  abk&lt;-<span class="kw">seq</span>(a0,b0,<span class="dt">length.out =</span> (K<span class="op">+</span><span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb2-5" title="5">  mu&lt;-(abk[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>abk[<span class="op">-</span>(K<span class="op">+</span><span class="dv">1</span>)])<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-6" title="6">  delta&lt;-(mu[<span class="dv">2</span>]<span class="op">-</span>mu[<span class="dv">1</span>])<span class="op">*</span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb2-7" title="7">  D&lt;-<span class="kw">diag</span>(<span class="dv">1</span>,K<span class="dv">-1</span>)[<span class="dv">1</span><span class="op">:</span>(K<span class="dv">-3</span>),]<span class="op">+</span><span class="kw">cbind</span>(<span class="kw">matrix</span>(<span class="dv">0</span>,K<span class="dv">-3</span>,<span class="dv">1</span>),<span class="kw">diag</span>(<span class="op">-</span><span class="dv">2</span>,K<span class="dv">-2</span>)[<span class="dv">1</span><span class="op">:</span>(K<span class="dv">-3</span>),])<span class="op">+</span><span class="kw">cbind</span>(<span class="kw">matrix</span>(<span class="dv">0</span>,K<span class="dv">-3</span>,<span class="dv">2</span>),<span class="kw">diag</span>(<span class="dv">1</span>,K<span class="dv">-3</span>))</a>
+<a class="sourceLine" id="cb2-8" title="8">  P&lt;-<span class="kw">t</span>(D)<span class="op">%*%</span>D</a>
+<a class="sourceLine" id="cb2-9" title="9">  Ps&lt;-P<span class="op">+</span><span class="kw">diag</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="kw">rep</span>(<span class="dv">0</span>,K<span class="dv">-3</span>)))</a>
+<a class="sourceLine" id="cb2-10" title="10">  <span class="co"># Gibbs采样</span></a>
+<a class="sourceLine" id="cb2-11" title="11">  nu&lt;-<span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-12" title="12">  A&lt;-<span class="dv">10</span><span class="op">^</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-13" title="13">  z&lt;-<span class="kw">matrix</span>(<span class="dv">1</span>,<span class="dt">ncol=</span>n,<span class="dt">nrow=</span>iter)</a>
+<a class="sourceLine" id="cb2-14" title="14">  a&lt;-<span class="kw">rep</span>(<span class="dv">1</span>,iter)</a>
+<a class="sourceLine" id="cb2-15" title="15">  tau&lt;-<span class="kw">rep</span>(<span class="dv">1</span>,iter)</a>
+<a class="sourceLine" id="cb2-16" title="16">  beta&lt;-<span class="kw">matrix</span>(<span class="dv">1</span>,<span class="dt">ncol=</span>K<span class="dv">-1</span>,<span class="dt">nrow=</span>iter)</a>
+<a class="sourceLine" id="cb2-17" title="17">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>iter) {</a>
+<a class="sourceLine" id="cb2-18" title="18">    c&lt;-<span class="kw">exp</span>(<span class="kw">c</span>(<span class="dv">0</span>,beta[i<span class="dv">-1</span>,]))<span class="op">/</span><span class="kw">sum</span>(<span class="kw">exp</span>(<span class="kw">c</span>(<span class="dv">0</span>,beta[i<span class="dv">-1</span>,])))</a>
+<a class="sourceLine" id="cb2-19" title="19">    <span class="cf">for</span> (p <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</a>
+<a class="sourceLine" id="cb2-20" title="20">       H&lt;-c<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>(x[p]<span class="op">-</span>mu)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span><span class="op">/</span>delta<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">sum</span>(c<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>(x[p]<span class="op">-</span>mu)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span><span class="op">/</span>delta<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb2-21" title="21">       z[i,p]&lt;-<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>K,<span class="dv">1</span>,<span class="dt">replace=</span>T,<span class="dt">prob=</span>H)</a>
+<a class="sourceLine" id="cb2-22" title="22">    }</a>
+<a class="sourceLine" id="cb2-23" title="23">    a[i]&lt;-<span class="dv">1</span><span class="op">/</span><span class="kw">rgamma</span>(<span class="dv">1</span>,<span class="dt">shape=</span>(nu<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>,<span class="dt">rate=</span><span class="dv">1</span><span class="op">/</span>A<span class="op">^</span><span class="dv">2</span><span class="op">+</span>nu<span class="op">/</span>tau[i<span class="dv">-1</span>])</a>
+<a class="sourceLine" id="cb2-24" title="24">    tau[i]&lt;-<span class="dv">1</span><span class="op">/</span><span class="kw">rgamma</span>(<span class="dv">1</span>,<span class="dt">shape=</span>(K<span class="op">+</span>nu<span class="dv">-1</span>)<span class="op">/</span><span class="dv">2</span>,<span class="dt">rate=</span>nu<span class="op">/</span>a[i]<span class="op">+</span>beta[i<span class="dv">-1</span>,]<span class="op">%*%</span>Ps<span class="op">%*%</span>beta[i<span class="dv">-1</span>,]<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb2-25" title="25">    beta[i,]&lt;-<span class="kw">hmc</span>(tau[i],z[i,],beta[i<span class="dv">-1</span>,],K,Ps,n)</a>
+<a class="sourceLine" id="cb2-26" title="26">  }</a>
+<a class="sourceLine" id="cb2-27" title="27">  b&lt;-burnin<span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-28" title="28">  beta.hat&lt;-<span class="kw">colMeans</span>(beta[b<span class="op">:</span>iter,])</a>
+<a class="sourceLine" id="cb2-29" title="29">  <span class="co"># 模型代入</span></a>
+<a class="sourceLine" id="cb2-30" title="30">  c.hat&lt;-<span class="kw">exp</span>(<span class="kw">c</span>(<span class="dv">0</span>,beta.hat))<span class="op">/</span><span class="kw">sum</span>(<span class="kw">exp</span>(<span class="kw">c</span>(<span class="dv">0</span>,beta.hat)))</a>
+<a class="sourceLine" id="cb2-31" title="31">  x0&lt;-<span class="kw">seq</span>(a0,b0,<span class="dt">length.out=</span>n)</a>
+<a class="sourceLine" id="cb2-32" title="32">  f.hat&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,n)</a>
+<a class="sourceLine" id="cb2-33" title="33">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n) {</a>
+<a class="sourceLine" id="cb2-34" title="34">    f.hat[i]&lt;-<span class="kw">sum</span>(c.hat<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>(x0[i]<span class="op">-</span>mu)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span><span class="op">/</span>delta<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>delta<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb2-35" title="35">  }</a>
+<a class="sourceLine" id="cb2-36" title="36">  <span class="co"># 返回值</span></a>
+<a class="sourceLine" id="cb2-37" title="37">  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">t=</span>x0,<span class="dt">pgm=</span>f.hat))</a>
+<a class="sourceLine" id="cb2-38" title="38">}</a>
+<a class="sourceLine" id="cb2-39" title="39">UU&lt;-<span class="cf">function</span>(b,nn,c,tau0,Ps){</a>
+<a class="sourceLine" id="cb2-40" title="40">  <span class="kw">return</span>(<span class="op">-</span><span class="kw">sum</span>(nn<span class="op">*</span><span class="kw">log</span>(c))<span class="op">+</span><span class="kw">t</span>(b)<span class="op">%*%</span>Ps<span class="op">%*%</span>b<span class="op">/</span><span class="dv">2</span><span class="op">/</span>tau0)</a>
+<a class="sourceLine" id="cb2-41" title="41">}</a>
+<a class="sourceLine" id="cb2-42" title="42">KK&lt;-<span class="cf">function</span>(u){</a>
+<a class="sourceLine" id="cb2-43" title="43">  <span class="kw">return</span>(<span class="kw">t</span>(u)<span class="op">%*%</span>u<span class="op">/</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb2-44" title="44">}</a>
+<a class="sourceLine" id="cb2-45" title="45">hmc&lt;-<span class="cf">function</span>(tau0,z0,beta0,K,Ps,n,<span class="dt">v=</span><span class="fl">0.018</span>,<span class="dt">L=</span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb2-46" title="46">  ss&lt;-K<span class="dv">-1</span></a>
+<a class="sourceLine" id="cb2-47" title="47">  M&lt;-<span class="kw">diag</span>(<span class="dv">1</span>,ss)</a>
+<a class="sourceLine" id="cb2-48" title="48">  u0&lt;-<span class="kw">matrix</span>(<span class="kw">rmvnorm</span>(<span class="dv">1</span>,<span class="dt">mu=</span><span class="kw">rep</span>(<span class="dv">0</span>,ss),<span class="dt">sigma =</span> M)) </a>
+<a class="sourceLine" id="cb2-49" title="49">  <span class="co">#beta0&lt;-matrix(1,K-1)</span></a>
+<a class="sourceLine" id="cb2-50" title="50">  nn&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,K)</a>
+<a class="sourceLine" id="cb2-51" title="51">  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>K) {</a>
+<a class="sourceLine" id="cb2-52" title="52">    nn[j]&lt;-<span class="kw">sum</span>(z0<span class="op">==</span>j)</a>
+<a class="sourceLine" id="cb2-53" title="53">  }</a>
+<a class="sourceLine" id="cb2-54" title="54">  u1&lt;-u0</a>
+<a class="sourceLine" id="cb2-55" title="55">  beta1&lt;-beta0</a>
+<a class="sourceLine" id="cb2-56" title="56">  c&lt;-<span class="kw">exp</span>(<span class="kw">c</span>(<span class="dv">0</span>,beta1))<span class="op">/</span><span class="kw">sum</span>(<span class="kw">exp</span>(<span class="kw">c</span>(<span class="dv">0</span>,beta1)))</a>
+<a class="sourceLine" id="cb2-57" title="57">  duc&lt;-nn[<span class="op">-</span><span class="dv">1</span>]<span class="op">-</span>n<span class="op">*</span>c[<span class="op">-</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb2-58" title="58">  <span class="cf">for</span> (l <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>L) {</a>
+<a class="sourceLine" id="cb2-59" title="59">    u1&lt;-u1<span class="op">-</span>v<span class="op">/</span><span class="dv">2</span><span class="op">*</span>(<span class="op">-</span>duc<span class="op">+</span>Ps<span class="op">%*%</span>beta1<span class="op">/</span>tau0)</a>
+<a class="sourceLine" id="cb2-60" title="60">    beta1&lt;-beta1<span class="op">+</span>v<span class="op">*</span>u1</a>
+<a class="sourceLine" id="cb2-61" title="61">    u1&lt;-u1<span class="op">-</span>v<span class="op">/</span><span class="dv">2</span><span class="op">*</span>(<span class="op">-</span>duc<span class="op">+</span>Ps<span class="op">%*%</span>beta1<span class="op">/</span>tau0)</a>
+<a class="sourceLine" id="cb2-62" title="62">  }   </a>
+<a class="sourceLine" id="cb2-63" title="63">  p&lt;-<span class="kw">min</span>(<span class="dv">1</span>,<span class="kw">exp</span>(<span class="op">-</span><span class="kw">UU</span>(beta1,nn,c,tau0,Ps)<span class="op">+</span><span class="kw">UU</span>(beta0,nn,c,tau0,Ps)<span class="op">-</span><span class="kw">KK</span>(u1)<span class="op">+</span><span class="kw">KK</span>(u0)))</a>
+<a class="sourceLine" id="cb2-64" title="64">  <span class="co">#if(rbinom(1,1,p)==1){</span></a>
+<a class="sourceLine" id="cb2-65" title="65">  <span class="cf">if</span>(p<span class="op">&gt;</span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb2-66" title="66">    <span class="kw">return</span>(beta1)</a>
+<a class="sourceLine" id="cb2-67" title="67">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb2-68" title="68">   <span class="kw">return</span>(beta0)</a>
+<a class="sourceLine" id="cb2-69" title="69">  }</a>
+<a class="sourceLine" id="cb2-70" title="70">}</a></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

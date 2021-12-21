@@ -1,0 +1,17 @@
+Package: StatComp21080
+Type: Package
+Title: Density estimations using Lindsey's method and penalized Gaussian mixtures
+Version: 1.0
+Date: 2021-12-16
+Author: Sun Jinglan
+Maintainer: Sun Jinglan <sunjinglan2000@mail.ustc.edu.cn>
+Description: Density estimations using Lindsey's method and penalized Gaussian mixtures, where gibbs sampling and Hamiltonian Monte Carlo sampling.
+License: GPL (>= 2)
+Imports: Rcpp, microbenchmark, knitr, rmarkdown,MASS, SuppDists, dplyr,mixtools
+LinkingTo: Rcpp
+RoxygenNote: 7.1.2
+Encoding: UTF-8
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+URL: http://github.com/SunJinglan/StatComp21080
+BugReports: http://github.com/SunJinglan/StatComp21080/issues
